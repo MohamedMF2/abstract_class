@@ -7,28 +7,32 @@ void main(){
 
   grid.addPlant(nuclear);
   grid.addPlant(solar); // the problem
+
 }
 
 class PowerGrid{
   List <PowerPlant> connectedPlants = [];
 
   addPlant(PowerPlant plant){
-    plant.turnon();
+    bool confirmation = plant.turnon('5 hours');
     connectedPlants.add(plant);
   }
 }
 
 abstract class PowerPlant {
-  turnon();
+ bool turnon(String workingHours);
 }
 
 class NuclearPlant implements PowerPlant{
-  turnon(){
-    print("I/'m a palnt and currently running  ");
+  bool turnon(String workingHours){
+    print("I/'m a palnt and currently running for${workingHours}  ");
+    return true;
+
   }
 }
 class SolarPlant implements PowerPlant{
-  turnon(){
-    print("I/'m a palnt and currently running  ");
+  bool turnon(String workingHours){
+    print("I/'m a palnt and currently running for${workingHours} ");
+    return true;
   }
 }
