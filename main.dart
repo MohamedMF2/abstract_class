@@ -1,6 +1,4 @@
-import 'dart:io';
-import 'dart:convert';
-import 'dart:async';
+
 
 void main(){
   PowerGrid grid = PowerGrid();
@@ -12,19 +10,24 @@ void main(){
 }
 
 class PowerGrid{
-  List <NuclearPlant> connectedPlants = [];
+  List <PowerPlant> connectedPlants = [];
 
-  addPlant(NuclearPlant plant){
+  addPlant(PowerPlant plant){
     plant.turnon();
     connectedPlants.add(plant);
   }
 }
-class NuclearPlant{
+
+abstract class PowerPlant {
+  turnon();
+}
+
+class NuclearPlant implements PowerPlant{
   turnon(){
     print("I/'m a palnt and currently running  ");
   }
 }
-class SolarPlant{
+class SolarPlant implements PowerPlant{
   turnon(){
     print("I/'m a palnt and currently running  ");
   }
